@@ -262,7 +262,7 @@ PLYLoader.prototype = Object.assign( Object.create( Loader.prototype ), {
 				normals: [],
 				uvs: [],
 				faceVertexUvs: [],
-				colors: []
+				colors: [],
 				ffr:[]
 			};
 
