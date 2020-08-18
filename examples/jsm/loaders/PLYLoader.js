@@ -263,6 +263,7 @@ PLYLoader.prototype = Object.assign( Object.create( Loader.prototype ), {
 				uvs: [],
 				faceVertexUvs: [],
 				colors: []
+				ffr:[]
 			};
 
 			var result;
@@ -349,6 +350,10 @@ PLYLoader.prototype = Object.assign( Object.create( Loader.prototype ), {
 
 			}
 
+			if ( buffer.ffr.length > 0 ){
+				geometry.setAttribute( 'ffr', new Float32BufferAttribute( buffer.ffr, 1 ) );
+			}
+
 			geometry.computeBoundingSphere();
 
 			return geometry;
@@ -377,6 +382,10 @@ PLYLoader.prototype = Object.assign( Object.create( Loader.prototype ), {
 
 					buffer.colors.push( element.red / 255.0, element.green / 255.0, element.blue / 255.0 );
 
+				}
+
+				if ( 'ffr' in element ){
+					buffer.ffr.push( element.ffr );
 				}
 
 			} else if ( elementName === 'face' ) {
